@@ -3,20 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simon Game</title>
     <link rel="stylesheet" href="simon css.css">
 </head>
 <body>
-    <h1> Simon Game</h1>
-    <H2>press any key to start</H2>
-    <div class="btn-container">
-        <div class="line1">
-            <div class="btn red" type="button" id="red">1</div>
-            <div class="btn yellow" type="button" id="yellow">2</div></div>
-        <div class="line2">
-            <div class="btn green" type="button" id="green">3</div>
-            <div class="btn blue" type="button" id="blue">4</div> </div>
-     
+    <header>
+        <div class="text-header">
+            <h1>Simon Game</h1>
+            <p>
+            Simon Says is an engaging web-based memory challenge that tests your ability to recall and repeat sequences. 
+            Players follow the commands of "Simon," recreating patterns of lights that grow progressively complex. 
+            It's a fun blend of concentration and reflexes that keeps players hooked as they strive to achieve higher levels.
+            </p>
+        </div>
+    </header>
+<!-- From Uiverse.io by vinodjangid07 --> 
+<input type="checkbox" id="checkbox" />
+<label for="checkbox" class="switch">
+  Start
+  <svg
+    class="slider"
+    viewBox="0 0 512 512"
+    height="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"
+    ></path>
+  </svg>
+</label>
+    <div class="layout-container">
+        <div class="btn-container">
+            <div class="line1">
+                <div class="btn red" type="button" id="red">1</div>
+                <div class="btn yellow" type="button" id="yellow">2</div>
+            </div>
+            <div class="line2">
+                <div class="btn green" type="button" id="green">3</div>
+                <div class="btn blue" type="button" id="blue">4</div>
+            </div>
+        </div>
+        <div class="instructions">
+            <h2>Instructions for Simon Says Game</h2>
+            <ol>
+                <li><strong>Start the Game</strong>: Click the "Start The Game" button to begin.</li>
+                <li><strong>Objective</strong>: Memorize and recreate the sequence of colors shown on the screen.</li>
+                <li><strong>How to Play</strong>:
+                    <ul>
+                        <li>Simon will highlight a series of colors in a specific order. Watch carefully.</li>
+                        <li>When it's your turn, click the colored buttons in the same sequence Simon displayed.</li>
+                    </ul>
+                </li>
+                <li><strong>Level Progression</strong>:
+                    <ul>
+                        <li>After successfully completing a sequence, your level will increase.</li>
+                        <li>Each new level adds a new color to the sequence, making it more challenging.</li>
+                    </ul>
+                </li>
+                <li><strong>Difficulty Increase</strong>:
+                    <ul>
+                        <li>As levels progress, the speed of the sequence display will increase.</li>
+                        <li>Keep your focus sharp as sequences grow longer and faster.</li>
+                    </ul>
+                </li>
+                <li><strong>Game Over</strong>:
+                    <ul>
+                        <li>If you make a mistake in recreating the sequence, the game ends.</li>
+                        <li>Click the "Start The Game" button again to restart and try to beat your previous score.</li>
+                    </ul>
+                </li>
+                <li><strong>Tip</strong>: Concentrate, stay calm, and aim for a higher score with each attempt!</li>
+            </ol>
+        </div>
     </div>
     <script src="simon js.js"></script>
 </body>
