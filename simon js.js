@@ -4,10 +4,11 @@ let btns = ["red", "yellow", "green", "blue"];
 let started = false;
 let level = 0;
 
-let h2 = document.querySelector("h2");
+let h2 = document.createElement("h2"); // Add an h2 for the level
+document.body.insertBefore(h2, document.querySelector(".btn-container")); // Insert the h2 before buttons
 
-// Start game on keypress
-document.addEventListener("keypress", function () {
+// Start game on button click
+document.querySelector("#start-btn").addEventListener("click", function () {
     if (!started) {
         console.log("game started");
         started = true;
@@ -58,8 +59,8 @@ function checkans(idx) {
             setTimeout(levelup, 1000);
         }
     } else {
-        h2.innerHTML = `Game over! Your score was <b>${level}</b> <br> Press any key to restart.`;
-        blinkRed(); // Call the blink function
+        h2.innerHTML = `Game over! Your score was <b>${level}</b> <br> Press the button to restart.`;
+        blinkRed();
         reset();
     }
 }
@@ -84,7 +85,7 @@ function reset() {
     gameSeq = [];
     userSeq = [];
     level = 0;
-    h2.innerText = "Press any key to start";
+    h2.innerText = "Click the button to start";
 }
 
 // Function to blink red background when game is over
@@ -98,5 +99,5 @@ function blinkRed() {
             clearInterval(interval);
             body.style.backgroundColor = ""; // Reset to default
         }
-    }, 300); // Change color every 300ms
+    }, 300);
 }
