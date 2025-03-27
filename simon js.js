@@ -4,27 +4,24 @@ let btns = ["red", "yellow", "green", "blue"];
 let started = false;
 let level = 0;
 
-let h2 = document.createElement("h2"); // Add an h2 for the level
-document.body.insertBefore(h2, document.querySelector(".btn-container")); // Insert the h2 before buttons
+let h2 = document.getElementById("level-title");
+let startBtn = document.getElementById("checkbox");
 
-// Start game on button click
-document.querySelector("#start-btn").addEventListener("click", function () {
-    if (!started) {
-        console.log("game started");
-        started = true;
-        levelup();
+startBtn.addEventListener("change", function () {
+    if (this.checked && !started) {
+        startGame();
     }
 });
 
-// Function to make a button flash
-function gameflash(btn) {
-    btn.classList.add("flash");
-    setTimeout(function () {
-        btn.classList.remove("flash");
-    }, 250);
+function startGame() {
+    started = true;
+    level = 0;
+    gameSeq = [];
+    userSeq = [];
+    h2.innerText = "Level 1";
+    levelup();
 }
 
-// Level up function
 function levelup() {
     userSeq = [];
     level++;
@@ -33,7 +30,6 @@ function levelup() {
     let randIdx = Math.floor(Math.random() * 4);
     let randColor = btns[randIdx];
     gameSeq.push(randColor);
-    console.log(gameSeq);
 
     flashSequence();
 }
@@ -42,8 +38,8 @@ function flashSequence() {
     let i = 0;
     function flashNext() {
         if (i < gameSeq.length) {
-            let randbtn = document.querySelector(`.${gameSeq[i]}`);
-            gameflash(randbtn);
+            let btn = document.getElementById(gameSeq[i]);
+            gameflash(btn);
             i++;
             setTimeout(flashNext, 1000);
         }
@@ -51,15 +47,18 @@ function flashSequence() {
     flashNext();
 }
 
+function gameflash(btn) {
+    btn.classList.add("flash");
+    setTimeout(() => btn.classList.remove("flash"), 250);
+}
+
 function checkans(idx) {
-    console.log("curr level:", level);
     if (userSeq[idx] === gameSeq[idx]) {
-        console.log("same value");
         if (userSeq.length === gameSeq.length) {
             setTimeout(levelup, 1000);
         }
     } else {
-        h2.innerHTML = `Game over! Your score was <b>${level}</b> <br> Press the button to restart.`;
+        h2.innerHTML = `Game over! Your score was <b>${level}</b> <br> Click "Start" to try again.`;
         blinkRed();
         reset();
     }
@@ -68,36 +67,30 @@ function checkans(idx) {
 function btnpress() {
     let btn = this;
     gameflash(btn);
-    console.log("btn was pressed");
     let userColor = btn.getAttribute("id");
     userSeq.push(userColor);
-
     checkans(userSeq.length - 1);
 }
 
-let allbtns = document.querySelectorAll(".btn");
-for (let btn of allbtns) {
-    btn.addEventListener("click", btnpress);
-}
+document.querySelectorAll(".btn").forEach(btn => btn.addEventListener("click", btnpress));
 
 function reset() {
     started = false;
     gameSeq = [];
     userSeq = [];
     level = 0;
-    h2.innerText = "Click the button to start";
+    startBtn.checked = false;
 }
 
-// Function to blink red background when game is over
 function blinkRed() {
-    let body = document.querySelector("body");
+    let body = document.body;
     let count = 0;
     let interval = setInterval(() => {
         body.style.backgroundColor = count % 2 === 0 ? "red" : "white";
         count++;
         if (count > 5) {
             clearInterval(interval);
-            body.style.backgroundColor = ""; // Reset to default
+            body.style.backgroundColor = "";
         }
     }, 300);
 }
