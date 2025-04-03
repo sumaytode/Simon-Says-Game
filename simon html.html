@@ -3,29 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Game - Neon Edition</title>
+    <title>Simon Game</title>
     <link rel="stylesheet" href="simon css.css">
+    <script defer src="simon js.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="text-header">
-            <h1>Simon Game</h1>
-            <p>
-                Test your memory in this neon-themed Simon game! Click 'Start' to begin.
-            </p>
-        </div>
-    </header>
+    <div class="overlay" id="gameOverEffect"></div>
 
-    <h2 id="level-title">Click "Start" to begin</h2>
-
-    <!-- Start Button -->
-    <input type="checkbox" id="checkbox" />
-    <label for="checkbox" class="switch" id="start-btn">
-        Start
-        <svg class="slider" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"></path>
-        </svg>
-    </label>
+    <h1>Simon Game</h1>
+    <h2>Repeat the flashing color sequence and level up! 🚀</h2>
+    <h3>Press any key to start the game</h3>
 
     <div class="layout-container">
         <div class="btn-container">
@@ -41,15 +30,21 @@
         <div class="instructions">
             <h2>How to Play</h2>
             <ol>
-                <li><strong>Start:</strong>Click "Start" to begin.</li>
-                <li><strong>Memorize:</strong>Memorize the flashing sequence.</li>
-                <li><strong>Steps:</strong>Click the buttons in the same order.</li>
-                <li><strong>Feature:</strong>Each level adds a new color.</li>
-                <li><strong>End Game:</strong>If you click wrong, the game is over!</li>
+                <li><strong>Start:</strong> Press any key to begin.</li>
+                <li><strong>Memorize:</strong> Watch the flashing sequence.</li>
+                <li><strong>Repeat:</strong> Click buttons in the same order.</li>
+                <li><strong>Levels:</strong> Each round adds a new color.</li>
+                <li><strong>Game Over:</strong> One mistake and it's over!</li>
             </ol>
+            <h2>Strategy & Tips</h2>
+            <ul>
+                <li>✅ Focus & memorize the pattern.</li>
+                <li>✅ Use small patterns for better memory.</li>
+                <li>✅ Say colors out loud to remember.</li>
+                <li>✅ Stay calm & take your time.</li>
+                <li>✅ Keep practicing for a better score.</li>
+            </ul>
         </div>
     </div>
-
-    <script src="simon js.js"></script>
 </body>
 </html>
