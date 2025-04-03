@@ -1,118 +1,83 @@
-/* Dark Neon Theme */
 body {
-    background-color: #121212;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* Container Styling */
-header {
-    text-align: center;
-    margin: 20px;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("F:/zigzag.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #0ff;
-    text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+  font-size: 50px;
+  margin-top: 10px;
 }
 
-/* Start Button */
-#checkbox {
-    display: none;
+h2, h3 {
+  margin: 10px auto;
+  max-width: 80%;
 }
 
-.switch {
-    position: relative;
-    width: fit-content;
-    padding: 12px 25px;
-    background: linear-gradient(45deg, #ff00ff, #00ffff);
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: all 0.3s;
-    box-shadow: 0 0 20px #00ffff;
-}
-
-.switch:hover {
-    box-shadow: 0 0 30px #ff00ff;
-    transform: scale(1.1);
-}
-
-.switch svg path {
-    fill: white;
-}
-
-#checkbox:checked + .switch {
-    background-color: rgb(174, 0, 255);
-    box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.5);
-}
-
-/* Game Layout */
 .layout-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 90%;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  margin: 2rem auto;
 }
 
-/* Button Grid */
 .btn-container {
-    display: flex;
-    flex-direction: column;
-    width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .line1, .line2 {
-    display: flex;
+  display: flex;
 }
 
-/* Game Buttons */
 .btn {
-    height: 150px;
-    width: 150px;
-    border-radius: 20%;
-    border: 5px solid #fff;
-    margin: 1rem;
-    cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  height: 200px;
+  width: 200px;
+  border-radius: 20%;
+  border: 5px solid white;
+  margin: 20px;
 }
 
-.red { background-color: #ff4444; box-shadow: 0 0 20px red; }
-.yellow { background-color: #ffcc00; box-shadow: 0 0 20px yellow; }
-.green { background-color: #00ff00; box-shadow: 0 0 20px green; }
-.blue { background-color: #0099ff; box-shadow: 0 0 20px blue; }
+.red { background-color: rgb(255, 0, 0); }
+.yellow { background-color: rgb(255, 166, 2); }
+.green { background-color: rgb(0, 255, 0); }
+.blue { background-color: rgb(0, 0, 255); }
 
-/* Button Effects */
-.btn:active, .flash {
-    transform: scale(1.1);
-    filter: brightness(1.5);
-}
+.flash { background-color: white; }
+.userflash { background-color: brown; }
 
-/* Instructions */
 .instructions {
-    width: 40%;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  width: 40%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  text-align: left;
 }
 
-h2 {
-    font-size: 1.5rem;
-    color: #0ff;
-    text-shadow: 0 0 10px #0ff;
+.instructions h2 {
+  text-align: center;
+}
+
+.instructions ol, .instructions ul {
+  padding-left: 20px;
+}
+
+/* Game Over Blinking Effect */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: red;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
