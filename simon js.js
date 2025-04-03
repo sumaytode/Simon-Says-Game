@@ -4,24 +4,24 @@ let btns = ["red", "yellow", "green", "blue"];
 let started = false;
 let level = 0;
 
-let h2 = document.getElementById("level-title");
-let startBtn = document.getElementById("checkbox");
+let h2 = document.querySelector("h3");
+let overlay = document.getElementById("gameOverEffect");
 
-startBtn.addEventListener("change", function () {
-    if (this.checked && !started) {
-        startGame();
+// Start game on keypress
+document.addEventListener("keypress", function () {
+    if (!started) {
+        started = true;
+        levelup();
     }
 });
 
-function startGame() {
-    started = true;
-    level = 0;
-    gameSeq = [];
-    userSeq = [];
-    h2.innerText = "Level 1";
-    levelup();
+// Function to make a button flash
+function gameflash(btn) {
+    btn.classList.add("flash");
+    setTimeout(() => btn.classList.remove("flash"), 250);
 }
 
+// Level up function
 function levelup() {
     userSeq = [];
     level++;
@@ -38,18 +38,13 @@ function flashSequence() {
     let i = 0;
     function flashNext() {
         if (i < gameSeq.length) {
-            let btn = document.getElementById(gameSeq[i]);
-            gameflash(btn);
+            let randbtn = document.querySelector(`.${gameSeq[i]}`);
+            gameflash(randbtn);
             i++;
             setTimeout(flashNext, 1000);
         }
     }
     flashNext();
-}
-
-function gameflash(btn) {
-    btn.classList.add("flash");
-    setTimeout(() => btn.classList.remove("flash"), 250);
 }
 
 function checkans(idx) {
@@ -58,8 +53,8 @@ function checkans(idx) {
             setTimeout(levelup, 1000);
         }
     } else {
-        h2.innerHTML = `Game over! Your score was <b>${level}</b> <br> Click "Start" to try again.`;
-        blinkRed();
+        h2.innerHTML = `Game Over! Your score: <b>${level}</b><br>Press any key to restart.`;
+        showGameOverEffect();
         reset();
     }
 }
@@ -69,28 +64,31 @@ function btnpress() {
     gameflash(btn);
     let userColor = btn.getAttribute("id");
     userSeq.push(userColor);
+
     checkans(userSeq.length - 1);
 }
 
-document.querySelectorAll(".btn").forEach(btn => btn.addEventListener("click", btnpress));
+document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", btnpress);
+});
 
 function reset() {
     started = false;
     gameSeq = [];
     userSeq = [];
     level = 0;
-    startBtn.checked = false;
+    h2.innerText = "Press any key to start";
 }
 
-function blinkRed() {
-    let body = document.body;
+// Game Over Animation Effect
+function showGameOverEffect() {
     let count = 0;
     let interval = setInterval(() => {
-        body.style.backgroundColor = count % 2 === 0 ? "red" : "white";
+        overlay.style.opacity = count % 2 === 0 ? "0.7" : "0";
         count++;
         if (count > 5) {
             clearInterval(interval);
-            body.style.backgroundColor = "";
+            overlay.style.opacity = "0";
         }
     }, 300);
 }
